@@ -39,6 +39,9 @@ OPS24X_BIDIRECTIONAL = "R|"
 OPS24X_INBOUND_ONLY  = "R+"
 OPS24X_OUTBOUND_ONLY = "R-"
 OPS24X_DIRECTION_PREF = OPS24X_BIDIRECTIONAL
+OPS24x_NO_JSON = "Oj"               # Make sure formatting is not set to JSON
+OPS24x_NO_UNITS = "Ou"              # Turn off sending units
+OPS24x_NO_MAGNITUDE = "Om"          # Turn off sending magnitude
 
 # These are for lab development only, so hand-waves are usable
 OPS24X_UNITS_PREF = 'UC'  # "UC" for cm/s
@@ -140,7 +143,7 @@ def main_init():
     serial_port.flushOutput()
 
     # Initialize and query Ops24x Module
-    logging.info("Initializing Ops24x Module")
+    logging.info("*** Initializing Ops24x Module ***")
     send_ops24x_cmd("Send Sampling Frequency: ", OPS24X_SAMPLING_FREQUENCY)
     send_ops24x_cmd("Send Transmit Power: ", OPS24X_TRANSMIT_POWER)
     send_ops24x_cmd("Send Magnitude Control: ", OPS24X_MAGNITUDE_MIN)
@@ -151,7 +154,11 @@ def main_init():
     send_ops24x_cmd("Send Zeros Preference: ", OPS24X_BLANKS_PREF)
     send_ops24x_cmd("Send Force Instantaneous speeds: ", OPS24X_LIVE_SPEED)
     send_ops24x_cmd("Send Directional Preference: ", OPS24X_BIDIRECTIONAL)
-    #send_ops24x_cmd("Ask Module Information: ", OPS24X_INFO_QUERY_COMMAND)
+    send_ops24x_cmd("Send Directional Preference: ", OPS24X_BIDIRECTIONAL)
+    send_ops24x_cmd("Send Format Preference: ", OPS24x_NO_JSON)
+    send_ops24x_cmd("Send Unit Display Preference: ", OPS24x_NO_UNITS)
+    send_ops24x_cmd("Send Magnitude Display Preference: ", OPS24x_NO_MAGNITUDE)
+    logging.info("*** Ops24x Module Initialized ***")
 
 
 
