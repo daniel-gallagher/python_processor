@@ -37,7 +37,7 @@ OPS24X_MAX_REPORTABLE = 'R<200\n'   # Report only < than this speed
 OPS24X_MIN_REPORTABLE = f'R>{TARGET_MIN_SPEED_ALLOWED}\n'       # Report only > this speed
 OPS24X_BIDIRECTIONAL = "R|"
 OPS24X_INBOUND_ONLY  = "R+"
-OPS24X_OUTBOUND_ONLY = "R|"
+OPS24X_OUTBOUND_ONLY = "R-"
 OPS24X_DIRECTION_PREF = OPS24X_BIDIRECTIONAL
 
 # These are for lab development only, so hand-waves are usable
@@ -150,7 +150,7 @@ def main_init():
     send_ops24x_cmd("Send Units Preference: ", OPS24X_UNITS_PREF)
     send_ops24x_cmd("Send Zeros Preference: ", OPS24X_BLANKS_PREF)
     send_ops24x_cmd("Send Force Instantaneous speeds: ", OPS24X_LIVE_SPEED)
-    send_ops24x_cmd("Send Directional Preference: ", OPS24X_INBOUND_ONLY)
+    send_ops24x_cmd("Send Directional Preference: ", OPS24X_BIDIRECTIONAL)
     #send_ops24x_cmd("Ask Module Information: ", OPS24X_INFO_QUERY_COMMAND)
 
 
